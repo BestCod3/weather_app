@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:weather_app/pages/searchPage.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({Key? key});
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -16,9 +22,17 @@ class HomePage extends StatelessWidget {
             size: 45,
           ),
           actions: [
-            Icon(
-              Icons.location_city,
-              size: 45,
+            InkWell(
+              onTap: () {
+                setState(() {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => SearchPage()));
+                });
+              },
+              child: Icon(
+                Icons.location_city,
+                size: 45,
+              ),
             )
           ],
         ),
@@ -48,7 +62,7 @@ class HomePage extends StatelessWidget {
               ),
               Positioned(
                 top: 330,
-                left: 10,
+                left: 120,
                 child: Text(
                   'Very cold',
                   style: TextStyle(fontSize: 60, color: Colors.white),
@@ -56,7 +70,15 @@ class HomePage extends StatelessWidget {
                 //try как приходить информация находит ошибки итд.
                 //initstate до скаффолда
                 //json formatter
-              )
+              ),
+              Positioned(
+                top: 530,
+                left: 150,
+                child: Text(
+                  'Bishkek',
+                  style: TextStyle(fontSize: 60, color: Colors.white),
+                ),
+              ),
             ],
           ),
         ),
